@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fgbg/flutter_fgbg.dart';
 import 'package:local_auth/local_auth.dart';
-import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 void main() {
@@ -26,7 +25,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -43,30 +42,30 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               children: <Widget>[
                 Row(
                   children: <Widget>[
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: () {
                         events.clear();
                         setState(() {});
                       },
                       child: Text("Clear"),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: () async {
                         events.add("// Opening camera");
                         setState(() {});
-                        await picker.getImage(source: ImageSource.camera);
+                        await picker.pickImage(source: ImageSource.camera);
                       },
                       child: Text("Take Image"),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: () async {
                         events.add("// Opening gallery");
                         setState(() {});
-                        await picker.getImage(source: ImageSource.gallery);
+                        await picker.pickImage(source: ImageSource.gallery);
                       },
                       child: Text("Pick Image"),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: () async {
                         events.add("// Prompting biometric");
                         setState(() {});
