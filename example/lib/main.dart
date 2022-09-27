@@ -18,7 +18,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   List<String> events = [];
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    events.add(state.toString());
+    events.add('${DateTime.now()}: ${state.toString()}');
     setState(() {});
   }
 
@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return FGBGNotifier(
       onEvent: (event) {
-        events.add(event.toString());
+        events.add('${DateTime.now()}: ${event.toString()}');
         setState(() {});
       },
       child: MaterialApp(
